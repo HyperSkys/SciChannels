@@ -2,7 +2,7 @@ package dev.hyperskys.scichannels.channel.messages;
 
 import dev.hyperskys.scichannels.SciChannels;
 import dev.hyperskys.scichannels.channel.Channel;
-import dev.hyperskys.scichannels.channel.annotations.ChannelInfo;
+import dev.hyperskys.scichannels.channel.reflect.ChannelInfo;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 import org.reflections.Reflections;
