@@ -20,7 +20,7 @@ public class ChannelSender {
         }
 
         for (Channel channel : ChannelListener.getArrayList()) {
-            String name = Channel.getName();
+            String name = channel.getName();
             if (jsonObject.getString("channel").equals(name)) {
                 channel.onMessageReceived(jsonObject.getJSONObject("data"));
             }
