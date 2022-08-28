@@ -14,14 +14,12 @@ public class ChannelSender {
         Reflections reflections = new Reflections(SciChannels.getClazz().getPackage().getName(), new TypeAnnotationsScanner());
         for (Class<?> clazz : reflections.getTypesAnnotatedWith(ChannelInfo.class)) {
             if (clazz.getAnnotation(ChannelInfo.class).name().equals(jsonObject.getString("channel"))) {
-                Channel instance = (Channel) clazz.newInstance();
-                instance.onMessageReceived(jsonObject.getJSONObject("data"));
+                ((Channel) clazz.newInstance()).onMessageReceived(jsonObject.getJSONObject("data"));
             }
         }
 
         for (Channel channel : ChannelListener.getArrayList()) {
-            String name = channel.getName();
-            if (jsonObject.getString("channel").equals(name)) {
+            if (jsonObject.getString("channel").equals(channel.getName())) {
                 channel.onMessageReceived(jsonObject.getJSONObject("data"));
             }
         }
